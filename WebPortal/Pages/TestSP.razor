@@ -1,0 +1,21 @@
+﻿@page "/testsp"
+@inject ISharePointClientContextFactory spClientContextFactory
+
+<h3>TestSP</h3>
+
+<p>Site: @_siteName</p>
+
+@code {
+
+    private string _siteName;
+
+    protected override async Task OnInitializedAsync()
+    {
+        using (var ctx = await spClientContextFactory.GetClientContext())
+        {
+            ctx.Load(ctx.Web);
+            await ctx.ExecuteQueryAsync();
+            _siteName = ctx.Web.Title;
+        }
+    }
+}

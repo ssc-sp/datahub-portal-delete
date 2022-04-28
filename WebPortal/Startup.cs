@@ -99,6 +99,8 @@ namespace Datahub.Portal
                 o.MaximumReceiveMessageSize = 10 * 1024 * 1024; // 10MB
             }).AddMicrosoftIdentityConsentHandler();
 
+            services.AddSharePointContextFactory();
+
             services.AddControllers();
 
             ConfigureLocalization(services);
