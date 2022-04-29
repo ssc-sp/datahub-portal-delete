@@ -5,6 +5,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Identity.Web;
 using Microsoft.SharePoint.Client;
 
+// Origin: https://ypcode.io/posts/2020/07/use-csom-aspnetcore/
+// See also: https://docs.microsoft.com/en-us/answers/questions/126999/csom-upload-a-file-to-a-subdirectory-in-sharepoint.html#:~:text=CSOM%20-%20Upload%20a%20file%20to%20a%20subdirectory,Sharepoint%20Online%20var%20uploadFile%20%3D%20list.RootFolder.Folders.GetByPath%20%28ResourcePath.FromDecodedUrl%20%28%22A%2FB%2FC%22%29%29.Files
+
 namespace Datahub.Portal.Services
 {
     public static class SharePointClientContextFactoryServiceConfiguration
@@ -83,6 +86,6 @@ namespace Datahub.Portal.Services
         public Task<ClientContext> GetClientContext(string siteUrl = null)
         {
             return GetClientContextInternal(siteUrl);
-        }
+        }        
     }
 }
